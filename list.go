@@ -26,13 +26,14 @@ func (l *List) Contains(i Item) bool {
 	return false
 }
 
-func (l *List) Search(i Item) []Item {
+func (l *List) SearchText(str string) *List {
+	l2 := NewList()
 	for _, item := range l.items {
-		if strings.Contains(string(item), string(i)) {
-			return []Item{item}
+		if strings.Contains(string(item), str) {
+			l2.Add(item)
 		}
 	}
-	return []Item{}
+	return l2
 }
 
 func (l *List) Equal(other *List) bool {
@@ -41,4 +42,17 @@ func (l *List) Equal(other *List) bool {
 
 func (l *List) IsEmpty() bool {
 	return len(l.items) == 0
+}
+
+func (l *List) Len() int {
+	return len(l.items)
+}
+
+func (l *List) Remove(item Item) {
+	for i, item_ := range l.items {
+		if item_ == item {
+			l.items = append(l.items[:i], l.items[i+1:]...)
+			return
+		}
+	}
 }
