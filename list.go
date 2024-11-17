@@ -5,10 +5,12 @@ import (
 	"strings"
 )
 
-type List []Item
+type List struct {
+	items []Item
+}
 
 func (l *List) Add(i Item) {
-	*l = append(*l, Item(i))
+	l.items = append(l.items, Item(i))
 }
 
 func NewList() *List {
@@ -16,7 +18,7 @@ func NewList() *List {
 }
 
 func (l *List) Contains(i Item) bool {
-	for _, item := range *l {
+	for _, item := range l.items {
 		if item == i {
 			return true
 		}
@@ -25,7 +27,7 @@ func (l *List) Contains(i Item) bool {
 }
 
 func (l *List) Search(i Item) []Item {
-	for _, item := range *l {
+	for _, item := range l.items {
 		if strings.Contains(string(item), string(i)) {
 			return []Item{item}
 		}
@@ -38,5 +40,5 @@ func (l *List) Equal(other *List) bool {
 }
 
 func (l *List) IsEmpty() bool {
-	return len(*l) == 0
+	return len(l.items) == 0
 }
