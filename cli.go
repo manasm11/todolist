@@ -1,4 +1,4 @@
-package cli
+package todolist
 
 type CliError string
 
@@ -19,3 +19,4 @@ func NewCli() *Cli {
 func (c *Cli) Run() error {
 	return NoArgsError
 }
+

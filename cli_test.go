@@ -1,4 +1,4 @@
-package cli
+package todolist
 
 import "testing"
 
@@ -20,3 +20,4 @@ func assertError(t testing.TB, got, want error) {
 		t.Errorf("got %q, want %q", got, want)
 	}
 }
+
